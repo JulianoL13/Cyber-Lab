@@ -1,0 +1,52 @@
+# Arquivos e diretórios do Vagrant
+.vagrant/
+*.log
+vagrant/tmp/
+vagrant/*.vdi
+disk_20gb.vdi
+
+# Arquivos de inventário gerados
+inventory.yml
+
+# Arquivos de chave privada
+*.key
+*.pem
+private_key
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Arquivos de ambiente
+.env
+
+# Logs
+logs/
+*.log
+
+# Arquivos de configuração local
+config.local.yml
+config.local.json
+
+# Arquivos de cache
+.cache/
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos de IDE/editores
+.idea/
+.vscode/
+*.sublime-*
+.project
+.settings/
+*.code-workspace
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini 
