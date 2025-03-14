@@ -266,7 +266,7 @@ while true; do
       ;;
     0)
       show_header
-      echo -e "${GREEN}Obrigado por usar o Gerenciador do Laboratório de Infraestrutura!${NC}"
+      echo -e "${GREEN}Obrigado por usar o Gerenciador do Laboratório de Infraestrutura! Feito com carinho e talvez um pouco de estresse por @JulianoL13${NC}"
       echo ""
       exit 0
       ;;
