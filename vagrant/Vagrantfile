@@ -1,0 +1,49 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require_relative 'scripts/network_config'
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+  
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    vb.memory = 1024
+    vb.cpus = 1
+    vb.linked_clone = true
+    vb.customize ["modifyvm", :id, "--groups", "/lab-infraestrutura"]
+    vb.customize ["modifyvm", :id, "--audio", "none"]
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    mkdir -p /vagrant/tmp/logs/network
+    mkdir -p /vagrant/tmp/logs/disk
+  SHELL
+
+  config.vm.define "node1" do |node|
+    node.vm.hostname = "node1"
+    
+    NetworkConfig.configure_private_network(node)
+    NetworkConfig.configure_public_network(node)
+    
+    node.vm.provision "shell", run: "always", inline: NetworkConfig.bridge_config_script
+  end
+
+  config.vm.define "node2" do |node|
+    node.vm.hostname = "node2"
+    
+    NetworkConfig.configure_private_network(node)
+    NetworkConfig.configure_public_network(node)
+    
+    node.vm.provision "shell", run: "always", inline: NetworkConfig.bridge_config_script
+  end
+
+  config.vm.define "node3" do |node|
+    node.vm.hostname = "node3"
+    
+    NetworkConfig.configure_private_network(node)
+    NetworkConfig.configure_public_network(node)
+    
+    node.vm.provision "shell", run: "always", inline: NetworkConfig.bridge_config_script
+  end
+end
